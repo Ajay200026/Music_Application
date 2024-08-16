@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music App Header</title>
+    <link rel="stylesheet" href="music.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <header class="header">
+        <div class="nav-icons">
+            <i class="fas fa-ellipsis-h"></i>
+            <i class="fas fa-chevron-left"></i>
+            <i class="fas fa-chevron-right"></i>
+        </div>
+        <div class="search-bar">
+            <i class="fas fa-home"></i>
+            <div class="search-input-container">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" placeholder="What do you want to play?">
+
+            </div>
+        </div>
+        <div class="user-icons">
+            <i class="fas fa-bell"></i>
+            <i class="fas fa-users"></i>
+            <div class="user-profile">
+                <span class="user-initial"></span>
+            </div>
+            <span id="mode-toggle"><i class="fas fa-moon"></i><i class="fas fa-sun" style="display: none;"></i></span>
+        </div>
+    </header>
+    <div class="main-container">
+        <nav class="sidebar">
+            <ul class="menu">
+                <li data-title="Home">
+                    <i class="fas fa-home"></i>
+                    <span class="menu-title">Home</span>
+                </li>
+                <li data-title="Search">
+                    <i class="fas fa-search"></i>
+                    <span class="menu-title">Search</span>
+                </li>
+                <li data-title="My Library">
+                    <a href="myplaylist.html"> <i class="fas fa-book"></i></a>
+
+                    <span class="menu-title">My Library</span>
+                </li>
+                <li data-title="CreatePlaylist" id="create-playlist">
+                    <i class="fas fa-plus-square"></i>
+                    <span class="menu-title">Create Playlist</span>
+                </li>
+                <li data-title="Liked Songs">
+                    <i class="fas fa-heart"></i>
+                    <span class="menu-title" href="./liked.html">Liked Songs</span>
+                </li>
+            </ul>
+            <ul class="playlists" id="playlists">
+                <!-- Created playlists will appear here -->
+            </ul>
+        </nav>
+
+        <div class="playlist-popup" id="playlist-popup">
+            <input type="text" id="playlist-name" placeholder="Enter playlist name" />
+            <button id="create-button">Create Playlist</button>
+        </div>
+
+        <div class="container">
+            <div class="grid-section">
+                <!-- Modal Popup -->
+                <div id="popupModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close-btn">&times;</span>
+                        <h2>Choose an Option</h2>
+                        <button class="popup-item" onclick="saveToPlaylist(this)">Add to Playlist</button>
+                        <button class="popup-item">Download</button>
+                        <button class="popup-item">Add to Queue</button>
+                    </div>
+                </div>
+                <div class="grid-item" data-music="song1">
+                    <img src="https://via.placeholder.com/150" alt="Album 1">
+                    <p></p> <!-- This will be populated by JS -->
+                    <button class="play-btn"><i class="fas fa-play"></i></button>
+                    <div class="icons">
+                        <button class="play-btn"><i class="fas fa-play"></i></button>
+                        <button class="heart-btn"><i class="fas fa-heart"></i></button>
+                        <button class="playlist-btn" data-song-title="Song Title 1" data-song-artist="Artist 1"><i
+                                class="fa-solid fa-ellipsis"></i></button>
+                    </div>
+                </div>
+                <div class="grid-item" data-music="song2">
+                    <img src="https://via.placeholder.com/150" alt="Album 2">
+                    <p></p> <!-- This will be populated by JS -->
+                    <button class="play-btn"><i class="fas fa-play"></i></button>
+                    <div class="icons">
+                        <button class="play-btn"><i class="fas fa-play"></i></button>
+                        <button class="heart-btn"><i class="fas fa-heart"></i></button>
+                        <button class="playlist-btn"><i class="fa-solid fa-ellipsis"></i></button>
+                    </div>
+                </div>
+                <div class="grid-item" data-music="song3">
+                    <img src="https://via.placeholder.com/150" alt="Album 1">
+                    <p></p> <!-- This will be populated by JS -->
+                    <button class="play-btn"><i class="fas fa-play"></i></button>
+                    <div class="icons">
+                        <button class="play-btn"><i class="fas fa-play"></i></button>
+                        <button class="heart-btn"><i class="fas fa-heart"></i></button>
+                        <button class="playlist-btn"><i class="fa-solid fa-ellipsis"></i></button>
+                    </div>
+                </div>
+                <div class="grid-item" data-music="song2">
+                    <img src="https://via.placeholder.com/150" alt="Album 2">
+                    <p></p> <!-- This will be populated by JS -->
+                    <button class="play-btn"><i class="fas fa-play"></i></button>
+                    <div class="icons">
+                        <button class="play-btn"><i class="fas fa-play"></i></button>
+                        <button class="heart-btn"><i class="fas fa-heart"></i></button>
+                        <button class="playlist-btn"><i class="fa-solid fa-ellipsis"></i></button>
+                    </div>
+                </div>
+                <div class="grid-item" data-music="song1">
+                    <img src="https://via.placeholder.com/150" alt="Album 1">
+                    <p></p> <!-- This will be populated by JS -->
+                    <button class="play-btn"><i class="fas fa-play"></i></button>
+                    <div class="icons">
+                        <button class="play-btn"><i class="fas fa-play"></i></button>
+                        <button class="heart-btn"><i class="fas fa-heart"></i></button>
+                        <button class="playlist-btn"><i class="fa-solid fa-ellipsis"></i></button>
+                    </div>
+                </div>
+                <div class="grid-item" data-music="song2">
+                    <img src="https://via.placeholder.com/150" alt="Album 2">
+                    <p></p> <!-- This will be populated by JS -->
+                    <button class="play-btn"><i class="fas fa-play"></i></button>
+                    <div class="icons">
+                        <button class="play-btn"><i class="fas fa-play"></i></button>
+                        <button class="heart-btn"><i class="fas fa-heart"></i></button>
+                        <button class="playlist-btn"><i class="fa-solid fa-ellipsis"></i></button>
+                    </div>
+                </div>
+                <div class="grid-item" data-music="song1">
+                    <img src="https://via.placeholder.com/150" alt="Album 1">
+                    <p></p> <!-- This will be populated by JS -->
+                    <button class="play-btn"><i class="fas fa-play"></i></button>
+                    <div class="icons">
+                        <button class="play-btn"><i class="fas fa-play"></i></button>
+                        <button class="heart-btn"><i class="fas fa-heart"></i></button>
+                        <button class="playlist-btn"><i class="fa-solid fa-ellipsis"></i></button>
+                    </div>
+                </div>
+                <div class="grid-item" data-music="song2">
+                    <img src="https://via.placeholder.com/150" alt="Album 2">
+                    <p></p> <!-- This will be populated by JS -->
+                    <button class="play-btn"><i class="fas fa-play"></i></button>
+                    <div class="icons">
+                        <button class="play-btn"><i class="fas fa-play"></i></button>
+                        <button class="heart-btn"><i class="fas fa-heart"></i></button>
+                        <button class="playlist-btn"><i class="fa-solid fa-ellipsis"></i></button>
+                    </div>
+                </div>
+                <div class="grid-item" data-music="song1">
+                    <img src="https://via.placeholder.com/150" alt="Album 1">
+                    <p></p> <!-- This will be populated by JS -->
+                    <button class="play-btn"><i class="fas fa-play"></i></button>
+                    <div class="icons">
+                        <button class="play-btn"><i class="fas fa-play"></i></button>
+                        <button class="heart-btn"><i class="fas fa-heart"></i></button>
+                        <button class="playlist-btn"><i class="fa-solid fa-ellipsis"></i></button>
+                    </div>
+                </div>
+                <div class="grid-item" data-music="song2">
+                    <img src="https://via.placeholder.com/150" alt="Album 2">
+                    <p></p> <!-- This will be populated by JS -->
+                    <button class="play-btn"><i class="fas fa-play"></i></button>
+                    <div class="icons">
+                        <button class="play-btn"><i class="fas fa-play"></i></button>
+                        <button class="heart-btn"><i class="fas fa-heart"></i></button>
+                        <button class="playlist-btn"><i class="fa-solid fa-ellipsis"></i></button>
+                    </div>
+                </div>
+
+            </div>
+            <div class="detail-section">
+                <img src="https://via.placeholder.com/300x300" alt="Detail Image">
+                <div class="detail-text">
+                    <h2>Happy</h2>
+                    <p>All OK</p>
+                </div>
+            </div>
+        </div>
+        <section class="music-player">
+            <div class="player-controls">
+                <img src="https://via.placeholder.com/50" alt="Album Art" class="album-art">
+                <div class="track-info">
+                    <h3>Dwapara (From "Krishnam Pranaya Sakhi")</h3>
+                    <p>Jaskaran Singh, Arjun Janya, V Nagendra Prasad</p>
+                </div>
+                <div class="playback-controls">
+                    <button class="control-button"><i class="fas fa-step-backward"></i></button>
+                    <button class="control-button"><i class="fas fa-play"></i></button>
+                    <button class="control-button"><i class="fas fa-step-forward"></i></button>
+                </div>
+                <div class="progress-bar">
+                    <span>0:04</span>
+                    <input type="range" value="4" min="0" max="283">
+                    <span>4:43</span>
+                </div>
+                <div class="volume-controls">
+                    <button class="volume-button"><i class="fas fa-volume-up"></i></button>
+                    <input type="range" value="50" min="0" max="100">
+                </div>
+            </div>
+        </section>
+
+        <audio id="audioPlayer" controls style="display:none;"></audio>
+
+        <script src="music.js"></script>
+</body>
+
+</html>

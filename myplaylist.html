@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playlist</title>
+</head>
+
+<body>
+    <h1>Playlist</h1>
+    <ul id="playlist"></ul>
+
+    <script>
+        console.log("Loading playlist...");
+
+        // Get the playlist from localStorage
+        var playlist = localStorage.getItem("playlist");
+
+        console.log("Playlist from localStorage:", playlist);
+
+        // If the playlist exists, display it
+        if (playlist) {
+            playlist = JSON.parse(playlist);
+            var playlistElement = document.getElementById("playlist");
+
+            console.log("Parsed playlist:", playlist);
+
+            playlist.forEach(function (song) {
+                var songElement = document.createElement("li");
+                songElement.textContent = song.title + " by " + song.artist;
+                playlistElement.appendChild(songElement);
+            });
+
+            console.log("Playlist displayed");
+        } else {
+            console.log("No playlist found in localStorage");
+        }
+    </script>
+</body>
+
+</html>
