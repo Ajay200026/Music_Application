@@ -5,37 +5,69 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Playlist</title>
+    <style>
+        /* Add some basic styling to make the playlist look decent */
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .playlist {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .playlist li {
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .playlist li:last-child {
+            border-bottom: none;
+        }
+
+        .song-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .song-info img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+    </style>
 </head>
 
 <body>
     <h1>Playlist</h1>
-    <ul id="playlist"></ul>
+    <ul class="playlist"></ul>
 
     <script>
-        console.log("Loading playlist...");
+        // Retrieve the playlist from local storage
+        const playlist = JSON.parse(localStorage.getItem('playlist')) || [];
 
-        // Get the playlist from localStorage
-        var playlist = localStorage.getItem("playlist");
+        // Create a list item for each song in the playlist
+        const playlistList = document.querySelector('.playlist');
+        playlist.forEach(song => {
+            const li = document.createElement('li');
+            const songInfo = document.createElement('div');
+            songInfo.className = 'song-info';
 
-        console.log("Playlist from localStorage:", playlist);
+            const albumArt = document.createElement('img');
+            albumArt.src = song.albumArt;
+            songInfo.appendChild(albumArt);
 
-        // If the playlist exists, display it
-        if (playlist) {
-            playlist = JSON.parse(playlist);
-            var playlistElement = document.getElementById("playlist");
+            const songDetails = document.createElement('div');
+            songDetails.innerHTML = `
+        <h2>${song.title}</h2>
+        <p>Artist: ${song.artist}</p>
+      `;
+            songInfo.appendChild(songDetails);
 
-            console.log("Parsed playlist:", playlist);
-
-            playlist.forEach(function (song) {
-                var songElement = document.createElement("li");
-                songElement.textContent = song.title + " by " + song.artist;
-                playlistElement.appendChild(songElement);
-            });
-
-            console.log("Playlist displayed");
-        } else {
-            console.log("No playlist found in localStorage");
-        }
+            li.appendChild(songInfo);
+            playlistList.appendChild(li);
+        });
     </script>
 </body>
 

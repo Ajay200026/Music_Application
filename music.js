@@ -260,3 +260,26 @@ function saveToPlaylist() {
   // Show an alert message
   alert("Saved to playlist!");
 }
+
+/* music*/
+const playlistBtns = document.querySelectorAll(".playlist-btn");
+
+playlistBtns.forEach((playlistBtn) => {
+  playlistBtn.addEventListener("click", () => {
+    const musicItem = playlistBtn.closest(".grid-item");
+    const song = {
+      src: musicItem.getAttribute("data-src"), // Assuming the src is stored in a data-src attribute
+      title: musicItem.querySelector("p").textContent, // Assuming the title is stored in a p tag
+      artist: "Sanjie", // Hardcoded artist for this example
+      albumArt: musicItem.querySelector("img").src, // Assuming the album art is stored in an img tag
+    };
+
+    // Add the song to local storage
+    let playlist = JSON.parse(localStorage.getItem("playlist")) || [];
+    playlist.push(song);
+    localStorage.setItem("playlist", JSON.stringify(playlist));
+
+    // Show an alert message
+    alert("Song added to playlist");
+  });
+});

@@ -4,138 +4,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Music App</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
+    <title>Login & Sign Up</title>
+    <link rel="stylesheet" href="login.css">
 </head>
 
 <body>
     <div class="container">
-        <nav class="sidebar">
-            <div class="logo">🎵</div>
-            <ul class="menu">
-                <li>
-                    <a href="#">
-                        <i class="fas fa-home menu-icon"></i>
-                        <span>Home</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fas fa-search menu-icon"></i>
-                        <span>Search</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fas fa-book menu-icon"></i>
-                        <span>My Library</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fas fa-plus-square menu-icon"></i>
-                        <span>Create Playlist</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fas fa-heart menu-icon"></i>
-                        <span>Liked Songs</span>
-                    </a>
-                </li>
-            </ul>
-
-        </nav>
-        <main class="main-content">
-            <header>
-                <div class="user-profile">
-                    <span class="notifications">🔔</span>
-                    <span class="user-icon">A</span>
-                </div>
-            </header>
-            <section class="content">
-                <div class="playlist-banner">
-                    <img src="https://via.placeholder.com/200" alt="Trending Hot Hits" class="banner-image">
-                    <div class="playlist-info">
-                        <h1>Trending Hot Hits</h1>
-                        <p>What's hot right now? Check it out here! #Trending #Viral #Hits #DesiHits</p>
-                        <button class="play-button">Play</button>
-                        <button class="follow-button">Follow</button>
-                    </div>
-                </div>
-                <div class="playlist">
-                    <div class="playlist-category">
-                        <button class="category-button active" onclick="filterCategory('all')">All</button>
-                        <button class="category-button" onclick="filterCategory('music')">Music</button>
-                        <button class="category-button" onclick="filterCategory('podcasts')">Podcasts</button>
-                    </div>
-                    <div class="playlist-items" id="playlist-items">
-                        <div class="playlist-item" data-category="music">
-                            <img src="https://via.placeholder.com/100" alt="I Wanna Be Yours" class="playlist-image">
-                            <div>I Wanna Be Yours (Slowed)</div>
-                        </div>
-                        <div class="playlist-item" data-category="music">
-                            <img src="https://via.placeholder.com/100" alt="Dwapara" class="playlist-image">
-                            <div>Dwapara (From "Krishnam Pranaya...)</div>
-                        </div>
-                        <div class="playlist-item" data-category="music">
-                            <img src="https://via.placeholder.com/100" alt="Hindi Melody" class="playlist-image">
-                            <div>Hindi ❤️ Melody Songs ❤️</div>
-                        </div>
-                        <div class="playlist-item" data-category="music">
-                            <img src="https://via.placeholder.com/100" alt="Romantic Mix" class="playlist-image">
-                            <div>Romantic Mix</div>
-                        </div>
-                        <div class="playlist-item" data-category="music">
-                            <img src="https://via.placeholder.com/100" alt="Kannada Melody" class="playlist-image">
-                            <div>Kannada Old Melody Hits</div>
-                        </div>
-                        <div class="playlist-item" data-category="music">
-                            <img src="https://via.placeholder.com/100" alt="Neeti Mullai" class="playlist-image">
-                            <div>Neeti Mullai X Muthu Mazhaiye...</div>
-                        </div>
-                        <div class="playlist-item" data-category="music">
-                            <img src="https://via.placeholder.com/100" alt="Tujhpe Main Fida" class="playlist-image">
-                            <div>Tujhpe Main Fida</div>
-                        </div>
-                        <div class="playlist-item" data-category="music">
-                            <img src="https://via.placeholder.com/100" alt="Ondu Sarala Prema Kathe"
-                                class="playlist-image">
-                            <div>Ondu Sarala Prema Kathe (Original...)</div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </main>
-        <section class="music-player">
-            <div class="player-controls">
-                <img src="https://via.placeholder.com/50" alt="Album Art" class="album-art">
-                <div class="track-info">
-                    <h3>Dwapara (From "Krishnam Pranaya Sakhi")</h3>
-                    <p>Jaskaran Singh, Arjun Janya, V Nagendra Prasad</p>
-                </div>
-                <div class="playback-controls">
-                    <button class="control-button"><i class="fas fa-step-backward"></i></button>
-                    <button class="control-button"><i class="fas fa-play"></i></button>
-                    <button class="control-button"><i class="fas fa-step-forward"></i></button>
-                </div>
-                <div class="progress-bar">
-                    <span>0:04</span>
-                    <input type="range" value="4" min="0" max="283">
-                    <span>4:43</span>
-                </div>
-                <div class="volume-controls">
-                    <button class="volume-button"><i class="fas fa-volume-up"></i></button>
-                    <input type="range" value="50" min="0" max="100">
-                </div>
+        <div class="form-container">
+            <div class="form login-form">
+                <h2>Login</h2>
+                <form id="login-form">
+                    <input type="email" id="login-email" placeholder="Email" required>
+                    <input type="password" id="login-password" placeholder="Password" required>
+                    <button type="button" id="login-button">Login</button>
+                </form>
+                <label id="signup-toggle">Don't have an account? Sign Up</label>
             </div>
-        </section>
 
-
+            <div class="form signup-form">
+                <h2>Sign Up</h2>
+                <form id="signup-form">
+                    <input type="text" id="signup-name" placeholder="Name" required>
+                    <input type="email" id="signup-email" placeholder="Email" required>
+                    <input type="password" id="signup-password" placeholder="Password" required>
+                    <button type="button" id="signup-button">Sign Up</button>
+                </form>
+                <label id="login-toggle">Already have an account? Login</label>
+            </div>
+        </div>
     </div>
-    <script src="scripts.js"></script>
+    <script src="login.js"></script>
 </body>
 
 </html>
